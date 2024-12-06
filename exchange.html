@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>4artproject101</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom, #0b2647, #ffffff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+      color: #fff;
+      position: relative;
+    }
+
+    .navbar {
+      width: 100%;
+      background-color: #ffffff;
+      color: #000;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 10;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .navbar h1 {
+      font-size: 1.2rem;
+      margin: 0;
+      color: #0b2647;
+    }
+
+    .navbar .version {
+      font-size: 0.9rem;
+      color: #888;
+    }
+
+    .navbar .menu {
+      display: flex;
+      gap: 20px;
+    }
+
+    .navbar .menu a {
+      text-decoration: none;
+      color: #0b2647;
+      font-size: 1rem;
+      padding: 8px 15px;
+      border-radius: 5px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .navbar .menu a:hover {
+      background-color: #0b2647;
+      color: #ffffff;
+    }
+
+    .crypto-exchange {
+      background-color: #fff;
+      color: #000;
+      border-radius: 10px;
+      width: 400px;
+      padding: 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      margin-top: 100px; /* Navbar'dan biraz boşluk */
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .header h2 {
+      font-size: 1.5rem;
+    }
+
+    .tab {
+      background: none;
+      border: none;
+      color: #007bff;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+
+    .tab.active {
+      color: #000;
+      font-weight: bold;
+    }
+
+    .form-group {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      font-size: 0.9rem;
+    }
+
+    input {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 10px;
+      width: 70%;
+    }
+
+    .currency {
+      background-color: #f0f0f0;
+      border-radius: 5px;
+      padding: 8px 12px;
+    }
+
+    .info {
+      margin-bottom: 15px;
+      font-size: 0.8rem;
+    }
+
+    .info a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    .exchange-btn {
+      width: 100%;
+      padding: 10px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .exchange-btn:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar yeah -->
+  <div class="navbar">
+    <h1>4artcoin</h1>
+    <div class="menu">
+      <a href="index.html">Home</a>
+      <a href="exchange.html">Let's Exchange</a>
+      <a href="#services">Servisler</a>
+      <a href="#pricing">Satın Al</a>
+      <a href="#contact">İletişim</a>
+    </div>
+    <span class="version">v1.0.0</span>
+  </div>
+  <!-- Crypto Exchange yerimiz -->
+  <div class="crypto-exchange">
+    <div class="header">
+      <h2>Crypto Exchange</h2>
+      <button class="tab active">Buy/Sell Crypto</button>
+    </div>
+    <div class="form">
+      <div class="form-group">
+        <label for="send">You send</label>
+        <input type="number" id="send" placeholder="0.1">
+        <div class="currency">ETH</div>
+      </div>
+      <div class="form-group">
+        <label for="rate">Floating rate</label>
+        <input type="text" id="rate" value="≈ 2.4474068" readonly>
+        <div class="currency">4ARTCOİN</div>
+      </div>
+      <div class="info">
+        <a href="#">Sign up to get cashback up to 39.69 USDT</a>
+      </div>
+      <button class="exchange-btn">Exchange</button>
+    </div>
+  </div>
+
+</div>
+
+  <script>
+    
+    const exchangeRate = 24.474068; // 1 BTC = 24.474068 ETH
+
+    // Gerekli elementleri sectik artık
+    const sendInput = document.getElementById('send');
+    const rateInput = document.getElementById('rate');
+
+    // Kullanıcı giriş yaptığında otomatik olarak hesaplasın insallah
+    sendInput.addEventListener('input', () => {
+      const sendValue = parseFloat(sendInput.value) || 0; // Geçersiz girişler bilmem ne
+      const getValue = sendValue * exchangeRate;
+      rateInput.value = `≈ ${getValue.toFixed(6)}`; // değeri 6 olan ondalıkları gösterecek inşallah 
+    });
+  </script>
+</body>
+</html>
